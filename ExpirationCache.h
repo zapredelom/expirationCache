@@ -5,6 +5,7 @@
 #include <mutex>
 #include <thread>
 #include <condition_variable>
+#include <algorithm>
 
 class Synchrophasotron
 {
@@ -109,5 +110,4 @@ private:
 private:
 	std::map<KeyType, ValueType> map_;
 	mutable std::mutex mt_;
-	std::condition_variable cond_;
 };
