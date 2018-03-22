@@ -5,7 +5,7 @@ lib is thread safe, and use one thread for all instances across the application
 
 usage:
 
-```
+```c++
 #include <iostream>
 #include "ExpirationCache.h"
 int main ()
@@ -23,4 +23,5 @@ int main ()
     std::cout<<e.what()<<std::endl;
   }
   return 0;
-}```
+}
+```
