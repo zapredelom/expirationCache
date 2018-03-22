@@ -4,6 +4,7 @@
 #include <list>
 #include <mutex>
 #include <thread>
+#include <condition_variable>
 
 class Synchrophasotron
 {
@@ -95,14 +96,15 @@ public:
 		}
 
 	}
-private:
-	virtual int getTTL() const override { return TTL; }
-	virtual void ClearAll() override { std::lock_guard<std::mutex> lock(mt_); map_.clear(); }
 	virtual int Count()const override
 	{
 		std::lock_guard<std::mutex> lock(mt_);
 		return map_.size();
 	}
+private:
+	virtual int getTTL() const override { return TTL; }
+	virtual void ClearAll() override { std::lock_guard<std::mutex> lock(mt_); map_.clear(); }
+	
 	 
 private:
 	std::map<KeyType, ValueType> map_;
